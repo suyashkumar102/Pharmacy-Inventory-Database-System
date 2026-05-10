@@ -39,7 +39,7 @@ password: 'YOUR_PASSWORD_HERE',
 
 ### 3. Run the Web App
 ```bash
-cd app
+cd frontend
 npm install
 npm start
 ```
