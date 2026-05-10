@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PIPMS — Pharmacy Inventory & Prescription Management</title>
+  <meta name="description" content="Pharmacy Inventory and Prescription Management System Dashboard" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- ─── SIDEBAR ─── -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-icon">💊</div>
+      <span class="brand-text">PIPMS</span>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="#" class="nav-link active" data-page="dashboard" id="nav-dashboard">
+        <span class="nav-icon">📊</span> Dashboard
+      </a>
+      <a href="#" class="nav-link" data-page="drugs" id="nav-drugs">
+        <span class="nav-icon">💉</span> Drugs
+      </a>
+      <a href="#" class="nav-link" data-page="patients" id="nav-patients">
+        <span class="nav-icon">🧑‍🤝‍🧑</span> Patients
+      </a>
+      <a href="#" class="nav-link" data-page="doctors" id="nav-doctors">
+        <span class="nav-icon">🩺</span> Doctors
+      </a>
+      <a href="#" class="nav-link" data-page="prescriptions" id="nav-prescriptions">
+        <span class="nav-icon">📋</span> Prescriptions
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <small>DBMS Mini Project</small>
+    </div>
+  </aside>
+
+  <!-- ─── MAIN AREA ─── -->
+  <main class="main-content" id="mainContent">
+    <!-- Top Bar -->
+    <header class="top-bar">
+      <button class="menu-toggle" id="menuToggle">☰</button>
+      <h1 class="page-title" id="pageTitle">Dashboard</h1>
+      <div class="top-bar-right">
+        <span class="badge" id="lowStockBadge" title="Low stock alerts">0 alerts</span>
+      </div>
+    </header>
+
+    <!-- Page Container -->
+    <div class="page-container" id="pageContainer">
+      <!-- Content is injected by JS -->
+    </div>
+  </main>
+
+  <!-- ─── MODAL ─── -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modal">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modalTitle">Title</h2>
+        <button class="modal-close" id="modalClose">&times;</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- ─── TOAST ─── -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

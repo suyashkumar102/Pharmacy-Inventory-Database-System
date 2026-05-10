@@ -1,33 +1,29 @@
-# Pharmacy Inventory & Prescription Management System
+# Pharmacy Inventory & Prescription Management System (PIPMS)
 
-A MySQL database project for managing pharmacy inventory, prescriptions, and dispensing records.
+A simplified MySQL database project with a **beautiful web UI** for managing pharmacy inventory and prescriptions.
 
-## Database: `pipms` (MySQL 8.0+)
+## Database: `pipms_simplified` (MySQL 8.0+)
 
-### Schema Overview
+### 5 Core Entities
 
-- **Drug** – drug catalog with pricing
-- **Batch** – inventory lots per drug with expiry tracking
-- **Supplier** – supplier info and purchase orders
-- **Patient / Doctor** – registered patients and doctors
-- **Prescription / Prescription_Item** – prescriptions and their line items
-- **Dispensing_Record** – tracks what was dispensed, when, and by whom
+| # | Entity | Purpose |
+|---|--------|---------|
+| 1 | **Drug** | Drug catalog with pricing and stock levels |
+| 2 | **Patient** | Patient demographics and contact info |
+| 3 | **Doctor** | Doctor registry with specializations |
+| 4 | **Prescription** | Prescriptions linking patients to doctors |
+| 5 | **Prescription_Item** | Drugs prescribed with quantities |
 
-### Files
-
-| File | Description |
-|------|-------------|
-| `01_schema.sql` | Table definitions |
-| `02_triggers.sql` | Auto-expire batches, reorder flags, price history |
-| `03_stored_procedures.sql` | Dispense items, receive POs, register patients/doctors |
-| `04_views.sql` | Low stock, expired batches, and report procedures |
-| `05_sample_data.sql` | Sample seed data |
-| `06_sample_queries.sql` | Example queries |
+### Advanced Features
+- **Trigger**: Auto-completes prescriptions when all items are dispensed
+- **Stored Procedures**: `dispense_item()`, `restock_drug()`, `cancel_prescription()`
+- **Views**: `vw_low_stock`, `vw_prescription_details`
 
 ## Setup
 
+### 1. Setup the Database
 ```sql
--- Run in order
+-- Run in MySQL in order
 source 01_schema.sql
 source 02_triggers.sql
 source 03_stored_procedures.sql
@@ -35,18 +31,34 @@ source 04_views.sql
 source 05_sample_data.sql
 ```
 
-## Usage
-
-```sql
--- Dispense a prescription item
-CALL dispense_item(item_id, batch_id, quantity, pharmacist_id);
-
--- Receive a purchase order
-CALL receive_purchase_order(po_id);
-
--- Check low stock
-SELECT * FROM vw_low_stock;
-
--- Check expired batches
-SELECT * FROM vw_expired_batches;
+### 2. Configure the Web App
+Edit `app/server.js` and set your MySQL root password:
+```js
+password: 'YOUR_PASSWORD_HERE',
 ```
+
+### 3. Run the Web App
+```bash
+cd app
+npm install
+npm start
+```
+Open **http://localhost:3000** in your browser.
+
+## SQL Files
+
+| File | Description |
+|------|-------------|
+| `01_schema.sql` | Table definitions (5 entities) |
+| `02_triggers.sql` | Auto-complete prescription trigger |
+| `03_stored_procedures.sql` | Dispense, restock, cancel procedures |
+| `04_views.sql` | Low stock & prescription detail views |
+| `05_sample_data.sql` | Demo data (15 drugs, 8 patients, 5 doctors, 6 prescriptions) |
+| `06_sample_queries.sql` | Example queries |
+
+## Web UI Features
+- 📊 **Dashboard** — Stats overview with low-stock alerts
+- 💉 **Drugs** — Full CRUD + restock via stored procedure
+- 🧑‍🤝‍🧑 **Patients** — Register and manage patients
+- 🩺 **Doctors** — Doctor registry
+- 📋 **Prescriptions** — Create multi-item prescriptions, dispense items, cancel
