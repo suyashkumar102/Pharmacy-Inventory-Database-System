@@ -57,8 +57,8 @@ Open **http://localhost:3000** in your browser.
 | `06_sample_queries.sql` | Example queries |
 
 ## Web UI Features
-- 📊 **Dashboard** — Stats overview with low-stock alerts
-- 💉 **Drugs** — Full CRUD + restock via stored procedure
-- 🧑‍🤝‍🧑 **Patients** — Register and manage patients
-- 🩺 **Doctors** — Doctor registry
-- 📋 **Prescriptions** — Create multi-item prescriptions, dispense items, cancel
+- **Dashboard** — Stats overview with low-stock alerts
+-  **Drugs** — Full CRUD + restock via stored procedure
+-  **Patients** — Register and manage patients
+-  **Doctors** — Doctor registry
+-  **Prescriptions** — Create multi-item prescriptions, dispense items, cancel
